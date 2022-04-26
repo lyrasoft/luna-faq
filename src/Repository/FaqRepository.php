@@ -47,7 +47,7 @@ class FaqRepository implements ManageRepositoryInterface, ListRepositoryInterfac
     #[ConfigureAction(SaveAction::class)]
     protected function configureSaveAction(SaveAction $action): void
     {
-        //
+        $this->newOrderLast($action);
     }
 
     #[ConfigureAction(ReorderAction::class)]
