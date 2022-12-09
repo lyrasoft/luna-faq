@@ -31,7 +31,7 @@ class FaqPackage extends AbstractPackage
             [
                 static::path("src/Module/Admin/Faq/**/*") => "@source/Module/Admin/Faq",
             ],
-            ['Lyrasoft\\Luna\\Module\\Admin' => 'App\\Module\\Admin'],
+            ['Lyrasoft\\Faq\\Module\\Admin' => 'App\\Module\\Admin'],
             ['modules', 'faq_admin'],
         );
 
@@ -39,7 +39,7 @@ class FaqPackage extends AbstractPackage
             [
                 static::path("src/Module/Front/Faq/**/*") => "@source/Module/Front/Faq",
             ],
-            ['Lyrasoft\\Luna\\Module\\Front' => 'App\\Module\\Front'],
+            ['Lyrasoft\\Faq\\Module\\Front' => 'App\\Module\\Front'],
             ['modules', 'faq_front'],
         );
 
@@ -49,8 +49,8 @@ class FaqPackage extends AbstractPackage
                 static::path("src/Repository/FaqRepository.php") => '@source/Repository',
             ],
             [
-                'Lyrasoft\\Luna\\Entity' => 'App\\Entity',
-                'Lyrasoft\\Luna\\Repository' => 'App\\Repository',
+                'Lyrasoft\\Faq\\Entity' => 'App\\Entity',
+                'Lyrasoft\\Faq\\Repository' => 'App\\Repository',
             ],
             ['modules', 'faq_model']
         );
