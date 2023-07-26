@@ -33,6 +33,7 @@ use Windwalker\ORM\Metadata\EntityMetadata;
  * The Faq class.
  */
 #[Table('faqs', 'faq')]
+#[\AllowDynamicProperties]
 class Faq implements EntityInterface
 {
     use EntityTrait;
