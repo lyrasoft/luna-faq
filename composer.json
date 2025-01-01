@@ -12,12 +12,16 @@
         {
             "name": "chokeslam",
             "email": "chokeslam5608@gmail.com"
+        },
+        {
+            "name": "Simon Asika",
+            "email": "asika32764@gmail.com"
         }
     ],
     "minimum-stability": "beta",
     "require": {
-        "myclabs/php-enum": "^1.8",
-        "lyrasoft/luna": "^1.0||^2.0"
+        "php": ">=8.2",
+        "lyrasoft/luna": "^2.0"
     },
     "extra": {
         "windwalker": {

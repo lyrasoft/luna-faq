@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Lyrasoft\Faq\Entity;
 
+use Windwalker\Core\DateTime\ServerTimeCast;
 use Windwalker\ORM\Attributes\AutoIncrement;
 use Unicorn\Enum\BasicState;
 use Windwalker\ORM\Attributes\Cast;
@@ -62,7 +63,7 @@ class Faq implements EntityInterface
     protected int $ordering = 0;
 
     #[Column('created')]
-    #[CastNullable(Chronos::class)]
+    #[CastNullable(ServerTimeCast::class)]
     #[CreatedTime]
     protected ?Chronos $created = null;
 
@@ -71,7 +72,7 @@ class Faq implements EntityInterface
     protected int $createdBy = 0;
 
     #[Column('modified')]
-    #[CastNullable(Chronos::class)]
+    #[CastNullable(ServerTimeCast::class)]
     #[CurrentTime]
     protected ?Chronos $modified = null;
 
@@ -180,7 +181,7 @@ class Faq implements EntityInterface
 
     public function setCreated(\DateTimeInterface|string|null $created): static
     {
-        $this->created = Chronos::wrapOrNull($created);
+        $this->created = Chronos::tryWrap($created);
 
         return $this;
     }
@@ -204,7 +205,7 @@ class Faq implements EntityInterface
 
     public function setModified(\DateTimeInterface|string|null $modified): static
     {
-        $this->modified = Chronos::wrapOrNull($modified);
+        $this->modified = Chronos::tryWrap($modified);
 
         return $this;
     }
