@@ -1,10 +1,20 @@
-import u from '@main';
+import {
+  useBs5Tooltip,
+  useDisableIfStackNotEmpty,
+  useDisableOnSubmit,
+  useFormComponent,
+  useFormValidation,
+  useKeepAlive,
+} from '@windwalker-io/unicorn-next';
 
-u.$ui.bootstrap.tooltip();
+const formSelector = '#admin-form';
 
-const formId = '#admin-form';
+useBs5Tooltip();
 
-u.formValidation()
-  .then(() => u.$ui.disableOnSubmit(formId));
-u.form(formId).initComponent();
-u.$ui.keepAlive(location.href);
+useFormComponent(formSelector);
+
+useFormValidation().then(() => useDisableOnSubmit(formSelector));
+
+useDisableIfStackNotEmpty();
+
+useKeepAlive(location.href);
