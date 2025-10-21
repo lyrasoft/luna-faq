@@ -32,8 +32,8 @@ return new /** 2021111210500001_FaqInit */ class extends AbstractMigration {
                 $schema->longtext('description')->comment('內容');
                 $schema->integer('ordering')->comment('順序');
                 $schema->datetime('created')->comment('建立時間');
-                $schema->integer('created_by')->comment('建立者');
-                $schema->datetime('modified')->comment('修改時間');
+                $schema->integer('created_by')->comment('修改時間');
+                $schema->datetime('modified')->comment('建立者');
                 $schema->integer('modified_by')->comment('修改者');
                 $schema->json('params')->nullable(true);
 
