@@ -9,22 +9,19 @@
 
 declare(strict_types=1);
 
-namespace Lyrasoft\faq\Migration;
+namespace App\Migration;
 
 use Lyrasoft\Faq\Entity\Faq;
-use Windwalker\Core\Console\ConsoleApplication;
-use Windwalker\Core\Migration\Migration;
+use Windwalker\Core\Migration\AbstractMigration;
+use Windwalker\Core\Migration\MigrateDown;
+use Windwalker\Core\Migration\MigrateUp;
 use Windwalker\Database\Schema\Schema;
 
-/**
- * Migration UP: 20211112105026329690_FaqInit.
- *
- * @var Migration $mig
- * @var ConsoleApplication $app
- */
-$mig->up(
-    static function () use ($mig) {
-        $mig->createTable(
+return new /** 2021111210500001_FaqInit */ class extends AbstractMigration {
+    #[MigrateUp]
+    public function up(): void
+    {
+        $this->createTable(
             Faq::class,
             function (Schema $schema) {
                 $schema->primary('id');
@@ -35,8 +32,8 @@ $mig->up(
                 $schema->longtext('description')->comment('內容');
                 $schema->integer('ordering')->comment('順序');
                 $schema->datetime('created')->comment('建立時間');
-                $schema->integer('created_by')->comment('修改時間');
-                $schema->datetime('modified')->comment('建立者');
+                $schema->integer('created_by')->comment('建立者');
+                $schema->datetime('modified')->comment('修改時間');
                 $schema->integer('modified_by')->comment('修改者');
                 $schema->json('params')->nullable(true);
 
@@ -44,13 +41,10 @@ $mig->up(
             }
         );
     }
-);
 
-/**
- * Migration DOWN.
- */
-$mig->down(
-    static function () use ($mig) {
-        $mig->dropTables(Faq::class);
+    #[MigrateDown]
+    public function down(): void
+    {
+        $this->dropTables(Faq::class);
     }
-);
+};
