@@ -28,7 +28,7 @@ class FaqPackage extends AbstractPackage
         $installer->installRoutes(static::path('routes/**/*.php'), 'routes');
 
         $installer->installMVCModules(Faq::class,
-            ['Admin'],
+            ['Front', 'Admin'],
             true
         );
     }
