@@ -50,7 +50,7 @@ use Windwalker\Core\Router\SystemUri;
                             <div class="accordion-header" itemprop="name">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#faq-collapse-{{ $i }}">
-                                    {{ $item->getTitle() }}
+                                    {{ $item->title }}
                                 </button>
                             </div>
 
@@ -59,7 +59,7 @@ use Windwalker\Core\Router\SystemUri;
                                 <div class="accordion-body"
                                     itemscope itemprop="acceptedAnswer"
                                     itemtype="https://schema.org/Answer">
-                                    {!! $item->getDescription() !!}
+                                    {!! $item->description !!}
                                 </div>
                             </div>
                         </div>
