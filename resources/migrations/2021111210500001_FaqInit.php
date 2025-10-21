@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace App\Migration;
+namespace Lyrasoft\faq\Migration;
 
 use Lyrasoft\Faq\Entity\Faq;
 use Windwalker\Core\Migration\AbstractMigration;
