@@ -27,7 +27,8 @@ class FaqPackage extends AbstractPackage
         $installer->installSeeders(static::path('resources/seeders/**/*'), 'seeders');
         $installer->installRoutes(static::path('routes/**/*.php'), 'routes');
 
-        $installer->installMVCModules(Faq::class,
+        $installer->installMVCModules(
+            Faq::class,
             ['Front', 'Admin'],
             true
         );
