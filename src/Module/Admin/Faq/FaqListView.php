@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Lyrasoft\Faq\Module\Admin\Faq;
 
+use Lyrasoft\Faq\Entity\Faq;
 use Lyrasoft\Faq\Module\Admin\Faq\Form\GridForm;
 use Lyrasoft\Faq\Repository\FaqRepository;
 use Windwalker\Core\Application\AppContext;
@@ -72,7 +73,8 @@ class FaqListView implements ViewModelInterface
             )
             ->ordering($ordering)
             ->page($page)
-            ->limit($limit);
+            ->limit($limit)
+            ->setDefaultItemClass(Faq::class);
 
         $pagination = $items->getPagination();
 
@@ -85,11 +87,6 @@ class FaqListView implements ViewModelInterface
         $this->prepareMetadata($app, $view);
 
         return compact('items', 'pagination', 'form', 'showFilters', 'ordering');
-    }
-
-    public function prepareItem(Collection $item): object
-    {
-        return $this->repository->getEntityMapper()->toEntity($item);
     }
 
     /**
