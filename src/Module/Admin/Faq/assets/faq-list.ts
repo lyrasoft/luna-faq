@@ -1,9 +1,16 @@
-import u from '@main';
+import {
+  useBs5Tooltip,
+  useCheckboxesMultiSelect,
+  useDisableOnSubmit,
+  useGridComponent
+} from '@windwalker-io/unicorn-next';
 
-u.$ui.bootstrap.tooltip();
+const formSelector = '#admin-form';
 
-const formId = '#admin-form';
+useBs5Tooltip();
 
-u.grid(formId).initComponent();
-u.$ui.disableOnSubmit(formId);
-u.$ui.checkboxesMultiSelect(formId);
+useGridComponent(formSelector);
+
+useDisableOnSubmit(formSelector);
+
+useCheckboxesMultiSelect(formSelector);

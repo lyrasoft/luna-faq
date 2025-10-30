@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Lyrasoft\Faq;
 
+use Lyrasoft\Faq\Entity\Faq;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Core\Package\PackageInstaller;
 
@@ -26,33 +27,10 @@ class FaqPackage extends AbstractPackage
         $installer->installSeeders(static::path('resources/seeders/**/*'), 'seeders');
         $installer->installRoutes(static::path('routes/**/*.php'), 'routes');
 
-        // Modules
-        $installer->installModules(
-            [
-                static::path("src/Module/Admin/Faq/**/*") => "@source/Module/Admin/Faq",
-            ],
-            ['Lyrasoft\\Faq\\Module\\Admin' => 'App\\Module\\Admin'],
-            ['modules', 'faq_admin'],
-        );
-
-        $installer->installModules(
-            [
-                static::path("src/Module/Front/Faq/**/*") => "@source/Module/Front/Faq",
-            ],
-            ['Lyrasoft\\Faq\\Module\\Front' => 'App\\Module\\Front'],
-            ['modules', 'faq_front'],
-        );
-
-        $installer->installModules(
-            [
-                static::path("src/Entity/Faq.php") => '@source/Entity',
-                static::path("src/Repository/FaqRepository.php") => '@source/Repository',
-            ],
-            [
-                'Lyrasoft\\Faq\\Entity' => 'App\\Entity',
-                'Lyrasoft\\Faq\\Repository' => 'App\\Repository',
-            ],
-            ['modules', 'faq_model']
+        $installer->installMVCModules(
+            Faq::class,
+            ['Front', 'Admin'],
+            true
         );
     }
 }
