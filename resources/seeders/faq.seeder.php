@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Part of starter project.
- *
- * @copyright  Copyright (C) 2021 __ORGANIZATION__.
- * @license    __LICENSE__
- */
-
 declare(strict_types=1);
 
 namespace App\Seeder;
@@ -19,7 +12,6 @@ use Windwalker\Core\Seed\SeedClear;
 use Windwalker\Core\Seed\SeedImport;
 use Windwalker\ORM\EntityMapper;
 
-// Faq Seeder
 return new /** Faq Seeder */ class extends AbstractSeeder {
     #[SeedImport]
     public function import(): void

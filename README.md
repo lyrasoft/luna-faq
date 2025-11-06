@@ -13,22 +13,27 @@ composer require lyrasoft/faq
 Then copy files to project
 
 ```shell
-php windwalker pkg:install lyrasoft/faq -t routes -t lang -t migrations -t seeders
+php windwalker pkg:install lyrasoft/faq -t routes -t migrations -t seeders
 ```
 
 Seeders
 
-- Add `faq-seeder.php` to `resources/seeders/main.php`
-- Add `faq` type to `category-seeder.php`
+- Add `faq.seeder.php` to `resources/seeders/main.seeder.php`
+- Package will auto add categories to seeders
+- If you want to modify categories, edit `seeders/categories/faq.categories.php`
 
-Languages
+### Languages
 
-If you don't want to copy language files, remove `-t lang` from install command.
-
-Then add this line to admin & front middleware:
+Add this line to admin & front middleware:
 
 ```php
-$this->lang->loadAllFromVendor('lyrasoft/faq', 'ini');
+$this->lang->loadAllFromVendor(\Lyrasoft\Faq\FaqPackage::class, 'ini');
+```
+
+If you want to copy language files, Run this command:
+
+```shell
+php windwalker pkg:install lyrasoft/faq -t lang
 ```
 
 ## Register Admin Menu
