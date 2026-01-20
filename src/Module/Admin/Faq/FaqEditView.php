@@ -81,7 +81,7 @@ class FaqEditView implements ViewModelInterface
     {
         $view->getHtmlFrame()
             ->setTitle(
-                $this->trans('unicorn.title.edit', title: 'Faq')
+                $this->trans('unicorn.title.edit', title: '常見問題')
             );
     }
 }

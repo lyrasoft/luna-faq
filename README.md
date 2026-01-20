@@ -41,13 +41,18 @@ php windwalker pkg:install lyrasoft/faq -t lang
 Edit `resources/menu/admin/sidemenu.menu.php`
 
 ```php
-// Category
-$menu->link('常見問題分類')
-    ->to($nav->to('category_list', ['type' => 'faq']))
-    ->icon('fal fa-sitemap');
+$menu->link('常見問題', '#')
+    ->icon('fal fa-question-circle');
 
-// Portfolio
-$menu->link('常見問題管理')
-    ->to($nav->to('faq_list'))
-    ->icon('fal fa-question');
+$menu->registerChildren(
+    function (MenuBuilder $menu) use ($nav, $lang) {
+        // Category
+        $menu->link('常見問題分類')
+            ->to($nav->to('category_list', ['type' => 'faq']));
+
+        // FAQ
+        $menu->link('常見問題管理')
+            ->to($nav->to('faq_list'));
+    }
+);
 ```
