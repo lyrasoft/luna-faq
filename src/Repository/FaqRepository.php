@@ -24,6 +24,7 @@ use Unicorn\Repository\ManageRepositoryInterface;
 use Unicorn\Repository\ManageRepositoryTrait;
 use Unicorn\Selector\ListSelector;
 use Windwalker\ORM\SelectorQuery;
+use Windwalker\Query\Query;
 
 /**
  * The FaqRepository class.
@@ -53,7 +54,11 @@ class FaqRepository implements ManageRepositoryInterface, ListRepositoryInterfac
     #[ConfigureAction(ReorderAction::class)]
     protected function configureReorderAction(ReorderAction $action): void
     {
-        //
+        $action->setReorderGroupHandler(
+            function (Query $query, Faq $entity) {
+                $query->where('category_id', $entity->categoryId);
+            }
+        );
     }
 
     #[ConfigureAction(BatchAction::class)]

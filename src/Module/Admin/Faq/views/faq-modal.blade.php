@@ -81,19 +81,20 @@ $callback = $app->input('callback');
                     </tr>
                 @endforeach
                 </tbody>
-
-                <tfoot>
-                <tr>
-                    <td colspan="20">
-                        {!! $pagination->render() !!}
-                    </td>
-                </tr>
-                </tfoot>
             </table>
+
+            <div>
+                <x-pagination :pagination="$pagination">
+                    <x-slot name="end">
+                        <x-pagination-jump :pagination="$pagination" />
+                        <x-pagination-stats :pagination="$pagination" class="ms-0 ms-md-auto" />
+                    </x-slot>
+                </x-pagination>
+            </div>
         </div>
 
         <div class="d-none">
-            @include('@csrf')
+            <x-csrf />
         </div>
 
         <x-batch-modal :form="$form" namespace="batch"></x-batch-modal>

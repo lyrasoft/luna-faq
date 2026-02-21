@@ -60,7 +60,7 @@ class FaqListView implements ViewModelInterface
 
         // Prepare Items
         $page     = $state->rememberFromRequest('page');
-        $limit    = $state->rememberFromRequest('limit');
+        $limit    = $state->rememberFromRequest('limit') ?: 30;
         $filter   = (array) $state->rememberFromRequest('filter');
         $search   = (array) $state->rememberFromRequest('search');
         $ordering = $state->rememberFromRequest('list_ordering') ?? $this->getDefaultOrdering();
@@ -96,7 +96,7 @@ class FaqListView implements ViewModelInterface
      */
     public function getDefaultOrdering(): string
     {
-        return 'faq.id DESC';
+        return 'faq.category_id, faq.ordering ASC';
     }
 
     /**
@@ -109,7 +109,7 @@ class FaqListView implements ViewModelInterface
         return [
             'faq.id',
             'faq.title',
-            'faq.alias',
+            'faq.description',
         ];
     }
 
@@ -122,7 +122,7 @@ class FaqListView implements ViewModelInterface
      */
     public function reorderEnabled(string $ordering): bool
     {
-        return $ordering === 'faq.ordering ASC';
+        return $ordering === 'faq.category_id, faq.ordering ASC';
     }
 
     /**

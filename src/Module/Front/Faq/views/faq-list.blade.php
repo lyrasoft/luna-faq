@@ -67,7 +67,7 @@ use Windwalker\Core\Router\SystemUri;
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    {!! $pagination->render() !!}
+                    <x-pagination :pagination="$pagination" />
                 </div>
             </div>
         </form>

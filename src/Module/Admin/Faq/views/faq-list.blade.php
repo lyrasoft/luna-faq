@@ -74,8 +74,8 @@ $workflow = $app->service(\Unicorn\Workflow\BasicStateWorkflow::class);
                     <th style="width: 10%" class="text-nowrap">
                         <div class="d-flex w-100 justify-content-end">
                             <x-sort
-                                asc="faq.ordering ASC"
-                                desc="faq.ordering DESC"
+                                asc="faq.category_id, faq.ordering ASC"
+                                desc="faq.category_id, faq.ordering DESC"
                             >
                                 @lang('unicorn.field.ordering')
                             </x-sort>
@@ -142,15 +142,16 @@ $workflow = $app->service(\Unicorn\Workflow\BasicStateWorkflow::class);
                     </tr>
                 @endforeach
                 </tbody>
-
-                <tfoot>
-                <tr>
-                    <td colspan="20">
-                        {!! $pagination->render() !!}
-                    </td>
-                </tr>
-                </tfoot>
             </table>
+
+            <div>
+                <x-pagination :pagination="$pagination">
+                    <x-slot name="end">
+                        <x-pagination-jump :pagination="$pagination" />
+                        <x-pagination-stats :pagination="$pagination" class="ms-0 ms-md-auto" />
+                    </x-slot>
+                </x-pagination>
+            </div>
         </div>
         @else
             <div class="grid-no-items card bg-light" style="padding: 125px 0;">
@@ -162,7 +163,7 @@ $workflow = $app->service(\Unicorn\Workflow\BasicStateWorkflow::class);
 
         <div class="d-none">
             <input name="_method" type="hidden" value="PUT" />
-            @include('@csrf')
+            <x-csrf />
         </div>
 
         <x-batch-modal :form="$form" namespace="batch"></x-batch-modal>
